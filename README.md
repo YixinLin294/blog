@@ -1,1 +1,1 @@
-# linyx.github.io
+# blog
