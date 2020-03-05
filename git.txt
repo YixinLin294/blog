@@ -1,0 +1,8 @@
+git push -> git pull --rebase -> git add... git commit... -> git push
+git revert?
+git branch --set-upstream-to=origin/<branch> <当前分支>
+git checkout -b
+git branch -vv
+git log
+git diff
+git merge
