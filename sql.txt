@@ -1,3 +1,19 @@
 <association>  可以嵌套查询 property 实体类的字段名 column 与外围查询的关联，即子查询的查询参数
 javaType 子查询的实体类 select 具体的子查询  ordermapper
 多列合并 https://segmentfault.com/q/1010000013279605?sort=created
+
+
+select CAST( CONCAT( YEAR ( NOW( ) ), DATE_FORMAT( '1996-01-20', '-%m-%d' ) ) as date);
+
+select YEAR(now());
+select DATE_FORMAT('1996-01-20','-%m-%d');
+
+select cast(CONCAT(YEAR(now()),DATE_FORMAT('1996-01-20','-%m-%d'))as DATE) ;
+
+索引 普通索引 create index index_name on table_name(column_name);
+     删除索引 drop index index_name on table_name ;
+	 
+	 
+mysql workbench 可用于导出er图
+er图可以导出sql语句  https://my.oschina.net/u/616133/blog/2876102
+mysql 5.7 的 timestamp问题 https://www.cnblogs.com/jiliunyongjin/p/7569893.html
