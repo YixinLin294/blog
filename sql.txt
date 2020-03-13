@@ -17,3 +17,30 @@ select cast(CONCAT(YEAR(now()),DATE_FORMAT('1996-01-20','-%m-%d'))as DATE) ;
 mysql workbench 可用于导出er图
 er图可以导出sql语句  https://my.oschina.net/u/616133/blog/2876102
 mysql 5.7 的 timestamp问题 https://www.cnblogs.com/jiliunyongjin/p/7569893.html
+
+
+INSERT INTO insurance_plan ( `status`, order_id, customer_id, commit_id, last_visible_commit, last_passed_commit, last_visible_time ) SELECT
+* 
+FROM
+	(
+	SELECT
+		'REVIEW' AS `status`,
+		o.id AS order_id,
+		c.id AS customer_id,
+		'5e65f95586063d00019e95a9' AS commit_id,
+		'5e05de9dde964800018fbef2' AS last_visible_commit,
+		'5e65e85f86063d00019e95a7' AS last_passed_commit,
+		now( ) AS last_visible_time 
+	FROM
+		`order` AS o
+		LEFT JOIN customer AS c ON o.customer_id = c.id 
+	WHERE
+		o.deleted = 0 
+		AND o.wb_status = 'PLAN_REVIEW' 
+		AND o.consultant_group_id IS NOT NULL 
+		AND c.asterisk_num != 1 
+		AND o.type = 'family_insuance' 
+		AND o.`status` != 'UNPAID' 
+	GROUP BY
+	o.id 
+	) AS t

@@ -6,3 +6,5 @@ git branch -vv
 git log
 git diff
 git merge
+
+git reflog --date=local | grep <branchname>
